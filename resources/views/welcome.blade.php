@@ -36,6 +36,13 @@
                 </div>
             @endif
 
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus eos nobis omnis ipsam architecto, officia ullam velit repudiandae, quo consequuntur expedita porro libero? Provident beatae hic fugit autem, laborum cupiditate!
+                Sunt officiis atque, dolore tempore et vel earum dignissimos magnam quos! Ducimus quaerat iure corrupti maxime dolorem sed architecto, asperiores quia fugiat, minima cumque quis sunt consectetur exercitationem nam commodi.
+                Facere minima perferendis voluptatibus adipisci ut nulla quasi possimus blanditiis explicabo, odio nam aliquid ducimus quisquam, fugit optio quas sequi, eligendi dignissimos ex ea magnam ullam error atque consectetur. Sapiente!
+                Nam commodi qui necessitatibus quibusdam veniam, nisi, minus quas ipsa suscipit dicta in corporis inventore illo, minima eligendi consequatur sed obcaecati architecto mollitia ratione. Aliquam quisquam itaque sapiente earum eveniet.
+            </p>
+
             <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
                 <div class="flex justify-center pt-8 sm:justify-start sm:pt-0">
                     <svg viewBox="0 0 651 192" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-16 w-auto text-gray-700 sm:h-20">
