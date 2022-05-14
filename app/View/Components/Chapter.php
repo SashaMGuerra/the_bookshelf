@@ -4,8 +4,12 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
+use App\Models\Story;
+
 class Chapter extends Component
 {
+    public $chapter;
+
     /**
      * Create a new component instance.
      *
@@ -13,7 +17,7 @@ class Chapter extends Component
      */
     public function __construct()
     {
-        //
+        // $this->chapter = Chapter::get
     }
 
     /**
