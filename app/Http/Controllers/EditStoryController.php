@@ -5,22 +5,48 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\Story;
+use App\Models\Chapter;
 
 class EditStoryController extends Controller
 {
-    function postEdit(Request $req){
-        if($req->input('saveStory') !== 'cancel'){
-            $newStory = new Story;
-            $newStory->author_id = auth()->user()->id;
-            $newStory->title = $req->input()['title'];
-            $newStory->synopsis = $req->input()['synopsis'];
-
-            $newStory->save();
+    function getView(){
+        if(session('editStory')){
+            $story = session('editStory');
+            return view('editStory', ['story' => $story]);
         }
-        return redirect("my_stories");
+        else{
+            return redirect('my_stories');
+        }
     }
 
-    function editStory($id){
-        return view('editStory', ['story' => Story::find($id)]);
+    function post(Request $req){
+        switch($req->input('submit')){
+            case 'cancel':
+                session()->forget('editStory');
+                return redirect('my_stories');
+                break;
+            case 'saveStory':
+                $input = $req->input();
+                if($input['id']){
+                    $story = Story::find($input['id']);
+                }
+                else{
+                    $story = new Story;
+                    $story->author_id = auth()->user()->id;
+                }
+        
+                $story->title = $input['title'];
+                $story->synopsis = $input['synopsis'];
+                $story->save();
+                
+                session()->forget('editStory');
+                return redirect('my_stories');
+                break;
+            default:
+                $chapter = Chapter::find($req->input());
+                session()->put('editChapter', $chapter);
+                return redirect('edit_chapter');
+                break;
+        }
     }
 }

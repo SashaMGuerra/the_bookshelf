@@ -52,13 +52,19 @@
                         <div class="">
                             <h3>Chapters</h3>
                             <div class="">
-                                chapters
+                                @foreach ($story->getChapters as $chapter)
+                                    <div class="p-6 border-b bg-gray-100 flex justify-between">
+                                        <div class="">{{$chapter['title']}}</div>
+                                        <div class="">{{$chapter['summary']}}</div>
+                                        <button name="submit" value="{{$chapter['id']}}">Edit</button>
+                                    </div>
+                                @endforeach
                             </div>
                         </div>
 
                         <div class="flex justify-between">
-                            <button type="submit" name="saveStory" value="saveStory">{{__('Save')}}</button>
-                            <button type="submit" name="saveStory" value="cancel">{{__('Cancel')}}</button>
+                            <button type="submit" name="submit" value="saveStory">{{__('Save')}}</button>
+                            <button type="submit" name="submit" value="cancel">{{__('Cancel')}}</button>
                         </div>
                     </form>
                 </div>
