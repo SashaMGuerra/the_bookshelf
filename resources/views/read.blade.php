@@ -6,6 +6,7 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200 text-center">
                     <h1 class="text-xl p-6">{{$story['title']}}</h1>
+                    <div class="text-center">{{__('Author: ')}} {{$authorName}}</div>
                     <hr>
                     <div class="text-justify p-2">{{$story['synopsis']}}</div>
                 </div>

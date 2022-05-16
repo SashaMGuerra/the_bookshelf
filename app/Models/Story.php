@@ -5,8 +5,6 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-use Illuminate\Support\Facades\DB;
-
 use App\Models\Chapter;
 
 class Story extends Model
@@ -15,12 +13,16 @@ class Story extends Model
     public $timestamps = false;
 
     /**
-     * Returns all stories that have at least one chapter.
+     * Returns all stories that have at least one chapter
+     * and that matches the searched description (if given one)
      */
-    public static function getMainStories($title = ''){
-        // return Chapter::all('story_id')->keyBy('story_id');
-        return Story::all()
-        ->whereIn('id', [1, 2, 3]);
+    public static function getMainStories($description = ''){
+        return Story::whereIn('id', Chapter::all('story_id')->groupBy('story_id')->keys())
+        ->where(function($query) use ($description){
+            $query->where('title', 'LIKE', "%$description%")
+            ->orWhere('synopsis', 'LIKE', "%$description%");
+        })
+        ->get();
     }
 
     /**
