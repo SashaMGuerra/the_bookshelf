@@ -8,8 +8,8 @@ use App\Models\Story;
 
 class MainController extends Controller
 {
-    function getMain(){
-        $stories = Story::getStories();
+    function getView(){
+        $stories = Story::getMainStories();
         return view('main', ["stories" => $stories]);
     }
 

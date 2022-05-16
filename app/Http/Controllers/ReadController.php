@@ -9,26 +9,31 @@ use App\Models\Chapter;
 
 class ReadController extends Controller
 {
-    function getStory(){
-        session()->put('storyChapter', 1);
-        $chapter = session('story')->getChapters[session('storyChapter')-1];
-        return view('read', ['story' => session('story'), 'chapter' => $chapter]);
+    function getView($storyId, $chapterNum){
+        $story = Story::getStory($storyId);
+        return view('read', ['story' => $story, 'chapterNum' => $chapterNum, 'chapter' => $story->getChapters[$chapterNum-1]]);
     }
 
-    function changeChapter(Request $req){
-        switch($req->input('changeChapter')){
-            case 'previous':
-                if(session()->get('storyChapter') > 1){
-                    session()->put('storyChapter', session()->get('storyChapter')-1);
-                }
-                return view('read', ['story' => session('story'), 'chapter' => session('story')->getChapters[session('storyChapter')-1]]);
-                break;
-            case 'next':
-                if(session()->get('storyChapter') < session('story')->getChapters->count()){
-                    session()->put('storyChapter', session()->get('storyChapter')+1);
-                }
-                return view('read', ['story' => session('story'), 'chapter' => session('story')->getChapters[session('storyChapter')-1]]);
-                break;
-        }
-    }
+    // function getStory(){
+    //     session()->put('storyChapter', 1);
+    //     $chapter = session('story')->getChapters[session('storyChapter')-1];
+    //     return view('read', ['story' => session('story'), 'chapter' => $chapter]);
+    // }
+
+    // function changeChapter(Request $req){
+    //     switch($req->input('changeChapter')){
+    //         case 'previous':
+    //             if(session()->get('storyChapter') > 1){
+    //                 session()->put('storyChapter', session()->get('storyChapter')-1);
+    //             }
+    //             return view('read', ['story' => session('story'), 'chapter' => session('story')->getChapters[session('storyChapter')-1]]);
+    //             break;
+    //         case 'next':
+    //             if(session()->get('storyChapter') < session('story')->getChapters->count()){
+    //                 session()->put('storyChapter', session()->get('storyChapter')+1);
+    //             }
+    //             return view('read', ['story' => session('story'), 'chapter' => session('story')->getChapters[session('storyChapter')-1]]);
+    //             break;
+    //     }
+    // }
 }

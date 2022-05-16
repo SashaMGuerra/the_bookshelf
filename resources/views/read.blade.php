@@ -25,19 +25,24 @@
                             </div>
                         @endif
                         <hr>
-                        <div class="text-clip">
+                        <div class="text-justify">
                             {{$chapter['text']}}
                         </div>
                     </div>
                     <hr>
-                    <form action="/read" method="post">
-                        <div class="w-24 text-center pt-2 flex justify-between">
-                            @csrf
-                            <button name="changeChapter" value="previous">{{__('Previous')}}</button>
-                            <span>{{session('storyChapter')}}/{{session('story')->getChapters->count()}}</span>
-                            <button name="changeChapter" value="next">{{__('Next')}}</button>
-                        </div>
-                    </form>
+                    <div class="flex justify-between">
+                        @if ($chapterNum > 1)
+                            <a href="/read/{{$story['id']}}/{{$chapterNum-1}}">Previous</a>
+                        @else
+                            <a href="/read/{{$story['id']}}/1">Previous</a>
+                        @endif
+                        <div>{{$chapterNum}}/{{$story->getChapters->count()}}</div>
+                        @if ($chapterNum < $story->getChapters->count())
+                            <a href="/read/{{$story['id']}}/{{$chapterNum+1}}">Next</a>
+                        @else
+                            <a href="/read/{{$story['id']}}/{{$story->getChapters->count()}}">Next</a>
+                        @endif
+                    </div>
                 </div>
             </div>
         </div>

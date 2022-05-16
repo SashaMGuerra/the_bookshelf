@@ -15,8 +15,10 @@ class CreateStoriesTable extends Migration
     {
         Schema::create('stories', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('author_id');
             $table->string('title');
             $table->text('synopsis');
+            $table->foreign('author_id')->references('id')->on('users');
         });
     }
 
