@@ -33,12 +33,6 @@ Route::post('/edit_story', [EditStoryController::class, 'post'])->middleware(['a
 Route::get('/edit_chapter', [EditChapterController::class, 'getView'])->middleware(['auth'])->name('edit_chapter');
 Route::post('/edit_chapter', [EditChapterController::class, 'post'])->middleware(['auth'])->name('edit_chapter');
 
-
-// Route::get('/edit_story', function () {
-//     return view('editStory');
-// })->middleware(['auth'])->name('edit_story');
-// Route::post('/edit_story', [EditStoryController::class, 'postEdit'])->middleware(['auth'])->name('my_stories');
-
 require __DIR__.'/auth.php';
 
 

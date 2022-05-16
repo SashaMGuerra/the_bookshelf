@@ -58,7 +58,8 @@
                                         <div class="p-6 border-b bg-gray-100 flex justify-between">
                                             <div class="">{{$chapter['title']}}</div>
                                             <div class="">{{$chapter['summary']}}</div>
-                                            <button name="submit" value="{{$chapter['id']}}">Edit</button>
+                                            <button name="submit" value="edit/{{$chapter['id']}}">Edit</button>
+                                            <button name="submit" value="delete/{{$chapter['id']}}">Delete</button>
                                         </div>
                                     @endforeach
                                 </div>

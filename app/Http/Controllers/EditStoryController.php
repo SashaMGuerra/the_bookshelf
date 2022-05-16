@@ -20,7 +20,7 @@ class EditStoryController extends Controller
     }
 
     function post(Request $req){
-        switch($req->input('submit')){
+        switch(explode('/', $req->input('submit'))[0]){
             case 'cancel':
                 session()->forget('editStory');
                 return redirect('my_stories');
@@ -48,9 +48,13 @@ class EditStoryController extends Controller
                 session()->put('editChapter', $chapter);
                 return redirect('edit_chapter');
                 break;
-            default:
-                $chapter = Chapter::find($req->input('submit'));
+            case 'edit':
+                $chapter = Chapter::find(explode('/', $req->input('submit'))[1]);
                 session()->put('editChapter', $chapter);
+                return redirect('edit_chapter');
+                break;
+            case 'delete':
+                Chapter::destroy(explode('/', $req->input('submit'))[1]);
                 return redirect('edit_chapter');
                 break;
         }
