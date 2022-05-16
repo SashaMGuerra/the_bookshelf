@@ -16,7 +16,8 @@
                     <div class="p-6 border-b bg-gray-100 flex items-center">
                         <div class="">{{$story['title']}}</div>
                         <div class="">{{$story['synopsis']}}</div>
-                        <button type="submit" form="myStoriesForm" name="submit" value="{{$story['id']}}">Edit</button>
+                        <button type="submit" form="myStoriesForm" name="submit" value="edit/{{$story['id']}}">{{__('Edit')}}</button>
+                        <button type="submit" form="myStoriesForm" name="submit" value="delete/{{$story['id']}}">{{__('Delete')}}</button>
                     </div>
                 @endforeach
             </div>

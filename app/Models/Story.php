@@ -23,12 +23,20 @@ class Story extends Model
         ->whereIn('id', [1, 2, 3]);
     }
 
-    public static function getStory($id){
-        return Story::find($id);
-    }
-
+    /**
+     * Returns all story chapters.
+     */
     function getChapters(){
         return $this->hasMany('App\Models\Chapter');
+    }
+
+    /**
+     * Deletes all chapters, then the story.
+     */
+    public static function fullDelete($id){
+        $story = Story::find($id);
+        Chapter::destroy($story->getChapters);
+        $story->delete();
     }
     
 }

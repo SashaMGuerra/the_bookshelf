@@ -49,18 +49,21 @@
                       " name="synopsis" id="synopsis">{{$story['synopsis']??''}}</textarea>
                         </div>
 
-                        <div class="">
-                            <h3>Chapters</h3>
+                        @if ($story['id'])
                             <div class="">
-                                @foreach ($story->getChapters as $chapter)
-                                    <div class="p-6 border-b bg-gray-100 flex justify-between">
-                                        <div class="">{{$chapter['title']}}</div>
-                                        <div class="">{{$chapter['summary']}}</div>
-                                        <button name="submit" value="{{$chapter['id']}}">Edit</button>
-                                    </div>
-                                @endforeach
+                                <h3 class="text-center">Chapters</h3>
+                                <button type="submit" name="submit" value="addChapter">{{__('Add chapter')}}</button>
+                                <div class="">
+                                    @foreach ($story->getChapters as $chapter)
+                                        <div class="p-6 border-b bg-gray-100 flex justify-between">
+                                            <div class="">{{$chapter['title']}}</div>
+                                            <div class="">{{$chapter['summary']}}</div>
+                                            <button name="submit" value="{{$chapter['id']}}">Edit</button>
+                                        </div>
+                                    @endforeach
+                                </div>
                             </div>
-                        </div>
+                        @endif
 
                         <div class="flex justify-between">
                             <button type="submit" name="submit" value="saveStory">{{__('Save')}}</button>

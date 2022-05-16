@@ -42,8 +42,14 @@ class EditStoryController extends Controller
                 session()->forget('editStory');
                 return redirect('my_stories');
                 break;
+            case 'addChapter':
+                $chapter = new Chapter;
+                $chapter->story_id = session('editStory')->id;
+                session()->put('editChapter', $chapter);
+                return redirect('edit_chapter');
+                break;
             default:
-                $chapter = Chapter::find($req->input());
+                $chapter = Chapter::find($req->input('submit'));
                 session()->put('editChapter', $chapter);
                 return redirect('edit_chapter');
                 break;

@@ -31,6 +31,7 @@ Route::get('/edit_story', [EditStoryController::class, 'getView'])->middleware([
 Route::post('/edit_story', [EditStoryController::class, 'post'])->middleware(['auth'])->name('edit_story');
 
 Route::get('/edit_chapter', [EditChapterController::class, 'getView'])->middleware(['auth'])->name('edit_chapter');
+Route::post('/edit_chapter', [EditChapterController::class, 'post'])->middleware(['auth'])->name('edit_chapter');
 
 
 // Route::get('/edit_story', function () {

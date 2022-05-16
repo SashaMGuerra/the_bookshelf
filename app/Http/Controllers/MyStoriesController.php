@@ -16,14 +16,19 @@ class MyStoriesController extends Controller
     }
 
     function post(Request $req){
-        switch($req->input('submit')){
+        switch(explode('/', $req->input('submit'))[0]){
             case 'addStory':
                 session()->put('editStory', new Story);
+                return redirect('/edit_story');
                 break;
-            default:
-                session()->put('editStory', Story::find($req->input('submit')));
+            case 'edit':
+                session()->put('editStory', Story::find(explode('/', $req->input('submit'))[1]));
+                return redirect('/edit_story');
+                break;
+            case 'delete':
+                Story::fullDelete(explode('/', $req->input('submit'))[1]);
+                return redirect('/my_stories');
                 break;
         }
-        return redirect('/edit_story');
     }
 }
