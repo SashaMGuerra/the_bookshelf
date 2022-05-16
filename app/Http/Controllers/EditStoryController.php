@@ -26,6 +26,10 @@ class EditStoryController extends Controller
                 return redirect('my_stories');
                 break;
             case 'saveStory':
+                $req->validate([
+                    'title' => 'required | min:3'
+                ]);
+
                 $input = $req->input();
                 if($input['id']){
                     $story = Story::find($input['id']);
@@ -36,7 +40,7 @@ class EditStoryController extends Controller
                 }
         
                 $story->title = $input['title'];
-                $story->synopsis = $input['synopsis'];
+                $story->synopsis = $input['synopsis']??'';
                 $story->save();
                 
                 session()->forget('editStory');

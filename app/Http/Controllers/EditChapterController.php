@@ -25,6 +25,11 @@ class EditChapterController extends Controller
                 return redirect('edit_story');
                 break;
             case 'saveChapter':
+                $req->validate([
+                    'title' => 'required | min:3',
+                    'text' => 'required | min:10'
+                ]);
+
                 $input = $req->input();
                 if($input['id']){
                     $chapter = Chapter::find($input['id']);

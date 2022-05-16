@@ -27,6 +27,9 @@
                             focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
                           " type="text" name="title" id="title" value="{{$story['title']??''}}">
                         </div>
+                        <div style="color: red" class="text-center">
+                            @error('title'){{$message}}@enderror
+                        </div>
                         <div class="">
                             <label for="synopsis">{{__('Synopsis')}}</label>
                         

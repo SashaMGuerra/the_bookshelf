@@ -61,6 +61,9 @@
             <footer class="bg-gray-100">
                 <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                     <div class="font-semibold text-x3 text-gray-500 leading-tight text-center">
+                        <a href="https://github.com/SashaMGuerra/the_bookshelf" target="_blank">
+                            <img width="25" src="{{ asset("images/footer/github_logo.png") }}"  alt="repository" style="display: inline-block">
+                        </a>
                         {{ __('Made by Sasha') }} 
                     </div>
                 </div>

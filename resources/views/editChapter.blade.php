@@ -30,6 +30,9 @@
                               " type="text" name="title" id="title" value="{{$chapter['title']??''}}">
                             </div>
                         </div>
+                        <div style="color: red" class="text-center">
+                            @error('title'){{$message}}@enderror
+                        </div>
                         <div class="">
                             <div class="">
                                 <label for="summary">{{__('Summary')}}</label>
@@ -56,6 +59,9 @@
                         <div class="">
                             <div class="">
                                 <label for="text">{{__('Text')}}</label>
+                                <div style="color: red" class="text-center">
+                                    @error('text'){{$message}}@enderror
+                                </div>
                             
                             <textarea class="
                             form-control
