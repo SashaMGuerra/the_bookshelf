@@ -33,7 +33,8 @@ class EditChapterController extends Controller
 
     function saveChapter(Request $req){
         $req->validate([
-            'title' => 'required | min:3',
+            'title' => 'max:120',
+            'summary' => 'max:500',
             'text' => 'required | min:10'
         ]);
 

@@ -25,7 +25,7 @@
                             ease-in-out
                             m-0
                             focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
-                          " type="text" name="title" id="title" value="{{$story['title']??''}}">
+                          " type="text" name="title" id="title" value="{{old('title')??$story['title']??''}}">
                         </div>
                         <div style="color: red" class="text-center">
                             @error('title'){{$message}}@enderror
@@ -49,7 +49,10 @@
                         ease-in-out
                         m-0
                         focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
-                      " name="synopsis" id="synopsis">{{$story['synopsis']??''}}</textarea>
+                      " name="synopsis" id="synopsis">{{old('synopsis')??$story['synopsis']??''}}</textarea>
+                        </div>
+                        <div style="color: red" class="text-center">
+                            @error('synopsis'){{$message}}@enderror
                         </div>
 
                         @if ($story['id'])

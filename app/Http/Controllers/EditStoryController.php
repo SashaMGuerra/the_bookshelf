@@ -27,7 +27,8 @@ class EditStoryController extends Controller
                 break;
             case 'saveStory':
                 $req->validate([
-                    'title' => 'required | min:3'
+                    'title' => 'required | min:3 | max:150',
+                    'synopsis' => 'required | min:10 | max:800'
                 ]);
 
                 $input = $req->input();
