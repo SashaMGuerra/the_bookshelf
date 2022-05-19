@@ -29,6 +29,7 @@
                 <div>
                     @if (Route::has('login'))
                         <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
+                            <a href="{{ url('/dictionary') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Dictionary</a>
                             @auth
                                 <a href="{{ url('/my_stories') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">My Stories</a>
                                 <!-- Logout -->

@@ -6,8 +6,23 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     <form action="/main" method="get">
-                        <input type="text" name="description" id="description">
-                        <button>Search</button>
+                        <input class="
+                        form-control
+                        block
+                        w-full
+                        px-3
+                        py-1.5
+                        text-base
+                        font-normal
+                        text-gray-700
+                        bg-white bg-clip-padding
+                        border border-solid border-gray-300
+                        rounded
+                        transition
+                        ease-in-out
+                        m-0
+                        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
+                      "type="text" name="description" id="description" placeholder="{{__('Search')}}">
                     </form>
                 </div>
                 <div class="p-6 bg-white border-b border-gray-200">
