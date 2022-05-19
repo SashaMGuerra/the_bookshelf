@@ -11,7 +11,9 @@ use App\Models\Story;
 class MyStoriesController extends Controller
 {
     function getView(){
-        $stories = Story::where('author_id', '=', auth()->user()->id)->get();
+        $stories = Story::where('author_id', '=', auth()->user()->id)
+        ->paginate(5);
+
         return view('myStories', ['stories' => $stories]);
     }
 

@@ -17,6 +17,7 @@ class StoriesSeeder extends Seeder
     {
         for ($i=0; $i < 5; $i++) { 
             DB::table('stories')->insert([
+                "author_id" => 1,
                 "title" => Str::random(7),
                 "synopsis" => "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus eos nobis omnis ipsam architecto, officia ullam velit repudiandae, quo consequuntur expedita porro libero? Provident beatae hic fugit autem, laborum cupiditate!"
             ]);

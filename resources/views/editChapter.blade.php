@@ -27,7 +27,7 @@
                                 ease-in-out
                                 m-0
                                 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
-                              " type="text" name="title" id="title" value="{{$chapter['title']??''}}">
+                              " type="text" name="title" id="title" value="{{old('title')??$chapter['title']??''}}">
                             </div>
                         </div>
                         <div style="color: red" class="text-center">
@@ -53,7 +53,7 @@
                             ease-in-out
                             m-0
                             focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
-                          " name="summary" id="summary">{{$chapter['summary']??''}}</textarea>
+                          " name="summary" id="summary">{{old('summary')??$chapter['summary']??''}}</textarea>
                             </div>
                         </div>
                         <div class="">
@@ -79,7 +79,7 @@
                             ease-in-out
                             m-0
                             focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
-                          " name="text" id="text">{{$chapter['text']??''}}</textarea>
+                          " name="text" id="text">{{old('text')??$chapter['text']??''}}</textarea>
                             </div>
                         </div>
 

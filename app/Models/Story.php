@@ -22,14 +22,14 @@ class Story extends Model
             $query->where('title', 'LIKE', "%$description%")
             ->orWhere('synopsis', 'LIKE', "%$description%");
         })
-        ->get();
+        ->paginate(5);
     }
 
     /**
      * Returns all story chapters.
      */
     function getChapters(){
-        return $this->hasMany('App\Models\Chapter');
+        return $this->hasMany(Chapter::class);
     }
 
     /**

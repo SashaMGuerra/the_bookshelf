@@ -21,6 +21,9 @@
                     </div>
                 @endforeach
             </div>
+            <div>
+                {{$stories->links()}}
+            </div>
         </div>
     </div>
 </x-app-layout>

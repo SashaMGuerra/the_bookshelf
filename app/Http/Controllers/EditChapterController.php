@@ -25,28 +25,33 @@ class EditChapterController extends Controller
                 return redirect('edit_story');
                 break;
             case 'saveChapter':
-                $req->validate([
-                    'title' => 'required | min:3',
-                    'text' => 'required | min:10'
-                ]);
-
-                $input = $req->input();
-                if($input['id']){
-                    $chapter = Chapter::find($input['id']);
-                }
-                else{
-                    $chapter = new Chapter;
-                    $chapter->story_id = session('editStory')->id;
-                }
-        
-                $chapter->title = $input['title'];
-                $chapter->summary = $input['summary']??'';
-                $chapter->text = $input['text'];
-                $chapter->save();
-                
-                session()->forget('editChapter');
-                return redirect('edit_story');
+                return EditChapterController::saveChapter($req);
+                      
                 break;
         }
+    }
+
+    function saveChapter(Request $req){
+        $req->validate([
+            'title' => 'required | min:3',
+            'text' => 'required | min:10'
+        ]);
+
+        $input = $req->input();
+        if($input['id']){
+            $chapter = Chapter::find($input['id']);
+        }
+        else{
+            $chapter = new Chapter;
+            $chapter->story_id = session('editStory')->id;
+        }
+
+        $chapter->title = $input['title'];
+        $chapter->summary = $input['summary']??'';
+        $chapter->text = $input['text'];
+        $chapter->save();
+
+        session()->forget('editChapter');
+        return redirect('edit_story');
     }
 }
